@@ -1,0 +1,70 @@
+﻿create table foriegn key when vreate table
+
+
+
+create table state(state_id int(10) not null primary key,state_name varchar(20) not null,country_id int(10),constraint fk_country foreign key (country_id) references country(country_id));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> describe state;                                                          +------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| state_id   | int(10)     | NO   | PRI | NULL    |       |
+| state_name | varchar(20) | NO   |     | NULL    |       |
+| country_id | int(10)     | YES  | MUL | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> create table city(city_id int(10) not null primary key,city_name varchar(20) not null,state_id int(10),constraint fk_state foreign key (state_id) references state(state_id));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> describe city;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| city_id   | int(10)     | NO   | PRI | NULL    |       |
+| city_name | varchar(20) | NO   |     | NULL    |       |
+| state_id  | int(10)     | YES  | MUL | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+
+insert into country
+
+insert into country(country_id,country_name)values('1','India'),(2,UnitedState of America'),(3,'Australia'),(4,'Germany'),(5,'Brazil');
+
+insert into country
+
+insert into state(state_id,state_name)values('101','MP','1'),('102','UP','1'),('103','MAHARASTA','1'),('104','PUNJAB','1'),('105','TEXAS','2');
+
+
+
+insert into state(state_id,state_name,COUNTRY_ID)values('101','MP','1'),('102','UP','1'),('103','MAHARASTA','1'),('104','PUNJAB','1'),('105','TEXAS','2'),('106','NEW YORK','2'),('107','ALASKA','2'),('108','QUEENSLAND','3'),('109','NEW SOUTH WALES','3'),('110','VICTORIA','3'),('111','Berlin','4'),('112','Saarland','4'),
+('113','Hamburg','4'),('114','Bahia','5'),('115','Mato Grosso','5');
+
+
+
+
+
+
+
+
+insert into city(city_id,city_name,state_id)values('201','MP','1'),('202','UP','1'),('203','MAHARASTA','1'),('204','PUNJAB','1'),('205','TEXAS','2'),('206','NEW YORK','2'),('207','ALASKA','2'),('208','QUEENSLAND','3'),('209','NEW SOUTH WALES','3'),('210','VICTORIA','3'),('211','Berlin','4'),('212','Saarland','4'),('213','Hamburg','4'),('214','Bahia','5'),('215','Mato Grosso','5'),('216','MP','1'),('217','UP','1'),('218','MAHARASTA','1'),('219','PUNJAB','1'),('220','TEXAS','2'),('221','NEW YORK','2'),('222','ALASKA','2'),('223','QUEENSLAND','3'),('224','NEW SOUTH WALES','3'),('225','VICTORIA','3'),('226','Berlin','4'),('227','Saarland','4'),('228','Hamburg','4'),('229','Bahia','5'),('230','Mato Grosso','5');
+
+
+
+
+
+insert into city(city_id,city_name,state_id)values('201','RATLAM','101'),('202','UJJAIN','101'),('203','INDORE','101'),('204','LUCKNOW','102'),('205','BANARAS','102'),('206','PRAYAG','102'),('207','MUMBAI','103'),('208','PUNE','103'),('209','TARAPUR','103'),('210','LUDHIYANA','104'),('211','AMRITSER','104'),('212','Austin','105'),('213','Houston','105'),('214','pelham','106'),('215','jericho','106'),('216','Anchorage','1'),
+
+
+
+
+
+insert into city(city_id,city_name,state_id)values('201','RATLAM','101'),('202','UJJAIN','101'),('203','INDORE','101'),('204','LUCKNOW','102'),('205','BANARAS','102'),('206','PRAYAG','102'),('207','MUMBAI','103'),('208','PUNE','103'),('209','TARAPUR','103'),('210','LUDHIYANA','104'),('211','AMRITSER','104'),('212','Austin','105'),('213','Houston','105'),('214','pelham','106'),('215','jericho','106'),('216','Anchorage','107'),('217','juneau','107'),('218','Brisbane','108'),('219','logan city','108'),('220','liverpool','109'),('221','city of blue mount','109'),('222','swan hill','110'),('223','Melbourne','110'),('224','north berlin','111'),('225','east berlin','111'),('226','merzig','112'),('227','Saarlouis','112'),('228','luneburg','113'),('229','Schwerin','113'),('230','porto seguro','114');
+
+
+
+
+insert into city(city_id,city_name,state_id)values('201','RATLAM','101'),('202','UJJAIN','101'),('203','INDORE','101'),('204','LUCKNOW','102'),('205','BANARAS','102'),('206','PRAYAG','102'),('207','MUMBAI','103'),('208','PUNE','103'),('209','TARAPUR','103'),('210','LUDHIYANA','104'),('211','AMRITSER','104'),('212','Austin','105'),('213','Houston','105'),('214','pelham','106'),('215','jericho','106'),('216','Anchorage','107'),('217','juneau','107'),('218','Brisbane','108'),('219','logan city','108'),('220','liverpool','109'),('221','city of blue mount','109'),('222','swan hill','110'),('223','Melbourne','110'),('224','north berlin','111'),('225','east berlin','111'),('226','merzig','112'),('227','Saarlouis','112'),('228','luneburg','113'),('229','Schwerin','113'),('230','porto seguro','114'),('231','barra','114'),('232','alta floresta','115'),('233','Sesc's','115');
+
