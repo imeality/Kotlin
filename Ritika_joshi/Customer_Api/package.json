@@ -1,0 +1,20 @@
+{
+  "name": "Customer_Api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "fs": "0.0.1-security",
+    "moment": "^2.24.0",
+    "mysql2": "^1.6.5",
+    "sequelize": "^4.43.0"
+  }
+}
