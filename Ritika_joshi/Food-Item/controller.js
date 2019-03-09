@@ -2,6 +2,8 @@ const db = require("./config.js");
 
 const Item = db.item;
 
+const Category = db.category;
+
 exports.create = (req,res) => {
 
 Item.create({
@@ -38,6 +40,181 @@ Item.findAll().then(item => {
 //  });
 //
 // };
+
+
+
+exports.findByKeyword = (req,res) => {
+
+
+let keyword = req.params.keyword;
+Item.findAll({
+  //attributes: ['Item_Name', 'Category_Type','Item_Price'],
+where :
+{
+$or:[
+{ Item_Name     : { $like : '%' + keyword +'%'} },
+{ Category_Type : { $like : '%' + keyword+'%'}  },
+{ Item_Price    : {$eq: keyword} }
+]
+}
+}).then(item => {
+
+  if(item!=0)
+  {
+        console.log("there is a item with this name "+req.params.keyword);
+      //  res.status(200).send("there is a item with this name "+req.params.keyword);
+  }
+  else {
+    {
+        console.log("there is no item with this name"+req.params.keyword);
+          res.status(200).send("there is no item with this name "+req.params.keyword);
+
+    }
+  }
+
+  res.send(item);
+});
+
+};
+
+
+
+
+
+
+
+
+
+
+exports.findByGreaterPrice = (req,res) => {
+
+
+let keyword = req.params.keyword;
+Item.findAll({
+  //attributes: ['Item_Name', 'Category_Type','Item_Price'],
+where :
+{
+
+ Item_Price  : {$gte: keyword}
+
+}
+}).then(item => {
+
+  if(item!=0)
+  {
+        console.log("there is item greater then equals to"+req.params.keyword);
+      //  res.status(200).send("there is a item with this name "+req.params.keyword);
+  }
+  else {
+    {
+          console.log("there is no item greater then equal or equals to"+req.params.keyword);
+          res.status(200).send("there is no item greater then equals to"+req.params.keyword);
+    }
+  }
+
+  res.send(item);
+});
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+exports.findByLessPrice = (req,res) => {
+
+
+let keyword = req.params.keyword;
+Item.findAll({
+  //attributes: ['Item_Name', 'Category_Type','Item_Price'],
+where :
+{
+ Item_Price    : {$lte: keyword}
+}
+}).then(item => {
+
+  if(item!=0)
+  {
+        console.log("there is item less then or equal to"+req.params.keyword);
+      //  res.status(200).send("there is a item with this name "+req.params.keyword);
+  }
+  else {
+    {
+        console.log("there is no item less then or equal to"+req.params.keyword);
+          res.status(200).send("there is no item less then or equal to"+req.params.keyword);
+
+    }
+  }
+
+  res.send(item);
+});
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+exports.findAllData = (req,res) => {
+
+Item.findAll({
+  include: [
+    {
+      model: db.category,
+      required: true
+
+    }
+  ]
+}).then(item => {
+
+  res.send(item);
+});
+
+};
+
+
+
+exports.findAllById = (req,res) => {
+
+ Item.findAll({
+   where: { FoodItem_Id : req.params.itemId},
+   include : [
+     {
+       model : db.category,
+       required: true
+     }
+   ]
+ }).then(item => {
+
+  res.send(item);
+
+ });
+};
+
+
+
 
 
 exports.findById = (req,res)  =>  {
@@ -87,8 +264,8 @@ exports.delete = (req,res)  => {
 
     where : { FoodItem_Id:id}
 
-  }).then(category => {
-    if(!category)
+  }).then(item => {
+    if(!item)
     {
       console.log("There is no id like "+id);
       res.status(200).send("There is no id like = "+id);
