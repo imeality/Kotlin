@@ -23,3 +23,4 @@ module.exports = db;
 
  db.item.belongsTo(db.category, {foreignKey: 'Category_Id'});
 db.category.hasOne(db.item, {foreignKey: 'Category_Id'});
+ 

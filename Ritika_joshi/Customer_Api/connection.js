@@ -9,3 +9,4 @@ dialect:"mysql"
 };
 
 module.exports  = mysql;
+ 

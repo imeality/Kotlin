@@ -63,6 +63,7 @@ $or:[
   {
         console.log("there is a item with this name "+req.params.keyword);
       //  res.status(200).send("there is a item with this name "+req.params.keyword);
+        res.send(item);
   }
   else {
     {
@@ -72,11 +73,10 @@ $or:[
     }
   }
 
-  res.send(item);
+
 });
 
 };
-
 
 
 
@@ -90,29 +90,34 @@ exports.findByGreaterPrice = (req,res) => {
 
 
 let keyword = req.params.keyword;
+
 Item.findAll({
   //attributes: ['Item_Name', 'Category_Type','Item_Price'],
 where :
 {
 
- Item_Price  : {$gte: keyword}
+
+Item_Price    :  {$gte : keyword}
+
 
 }
 }).then(item => {
 
   if(item!=0)
   {
-        console.log("there is item greater then equals to"+req.params.keyword);
-      //  res.status(200).send("there is a item with this name "+req.params.keyword);
+        console.log("there is item greater then or equal to"+req.params.keyword);
+
+      res.send(item);
   }
   else {
     {
-          console.log("there is no item greater then equal or equals to"+req.params.keyword);
-          res.status(200).send("there is no item greater then equals to"+req.params.keyword);
+        console.log("there is no item greater then or equal to"+req.params.keyword);
+          res.status(200).send("there is no item greater then or equal to"+req.params.keyword);
+
     }
   }
 
-  res.send(item);
+
 });
 
 };
@@ -147,7 +152,8 @@ where :
   if(item!=0)
   {
         console.log("there is item less then or equal to"+req.params.keyword);
-      //  res.status(200).send("there is a item with this name "+req.params.keyword);
+
+      res.send(item);
   }
   else {
     {
@@ -157,7 +163,7 @@ where :
     }
   }
 
-  res.send(item);
+
 });
 
 };
@@ -196,10 +202,20 @@ Item.findAll({
 
 
 
+
+
+
+
+
+
+
+
+
+
 exports.findAllById = (req,res) => {
 
  Item.findAll({
-   where: { FoodItem_Id : req.params.itemId},
+   where: {FoodItem_Id : req.params.itemId},
    include : [
      {
        model : db.category,
@@ -208,10 +224,32 @@ exports.findAllById = (req,res) => {
    ]
  }).then(item => {
 
-  res.send(item);
+     if(item!=0)
+     {
+       console.log("There is data");
+         res.send(item);
+     }
+
+     else {
+       res.status(200).send("there is no item with this id "+req.params.itemId);
+       console.log("thre is no item with this id "+req.params.itemId);
+     }
+
+
 
  });
 };
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -228,9 +266,9 @@ exports.findById = (req,res)  =>  {
     else {
       {
         console.log("There is a data");
-
-      }
         res.send(item);
+      }
+
     }
 
   });

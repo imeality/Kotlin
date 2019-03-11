@@ -15,3 +15,4 @@ module.exports = function(app)
   app.delete("/api/admin/:adminId",admins.delete);
 
 }
+ 

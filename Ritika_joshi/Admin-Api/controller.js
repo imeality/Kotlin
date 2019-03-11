@@ -37,8 +37,20 @@ exports.findById = (req,res)  =>  {
 
 Admin.findById(req.params.adminId).then(admin => {
 
- res.send(admin);
 
+
+ if(!admin)
+ {
+     console.log("There is no data with this id "+req.params.adminId);
+     return res.status(400).send("There is no data with this id "+req.params.adminId);
+
+
+ }
+ else{
+
+     console.log("There is data");
+ }
+      res.send(admin);
 })
 
 };
@@ -53,7 +65,9 @@ Admin.update({Password:req.body.Password,Phone_No:req.body.Phone_No},
 {where : {Admin_Id:req.params.adminId}
 }).then(()  =>  {
 
+
 res.status(200).send("update admin with id "+id);
+
 });
 
 };
@@ -67,7 +81,17 @@ Admin.destroy({
 
 where : { Admin_Id : id }
 
-}).then(() => {
-  res.status(200).send("delete admin "+id)
+}).then(admin => {
+  if(!admin)
+  {
+    console.log("There is no id like "+id);
+    res.status(200).send("There is no id like = "+id);
+
+  }
+  else {
+    console.log("delete information");
+    res.status(200).send("delete all information with id = "+id);
+  }
+
 })
 };

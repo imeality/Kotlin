@@ -77,17 +77,22 @@ exports.findByGreaterQutantiy = (req,res) =>
 Inventory.findAll({
 
   where : {
-     Inventory_Quantity: {$gte:keyword}
+
+        Inventory_Quantity : {$gte : keyword}
+
   }
 
 }).then(inventory => {
-if(inventory!= 0){
-  console.log("there is  inventory greater then "+keyword);
-  res.send(inventory);
+
+if(inventory!=0){
+res.send(inventory);
+
+    console.log("there is  inventory greater then "+keyword);
+
 }
 else
   {
-    res.status(400).send("thre is no inventory is greater than or equals to"+keyword);
+    res.status(200).send("thre is no inventory is greater than or equals to"+keyword);
     console.log("thre is no inventory is greater than or equals to"+keyword);
   }
 

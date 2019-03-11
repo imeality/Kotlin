@@ -19,7 +19,7 @@ console.log("drop and resynch with force false");
 require('./route.js')(app);
 
 
-var server = app.listen(3005,function(){
+var server = app.listen(3002,function(){
 
 var host = server.address().address
 var port = server.address().port

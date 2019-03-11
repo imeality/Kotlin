@@ -52,6 +52,47 @@ exports.findById = (req,res)  =>  {
 };
 
 
+
+
+//find by findByKeyword
+
+
+exports.findByKeyword = (req,res) => {
+
+
+let keyword = req.params.keyword;
+Category.findAll({
+  //attributes: ['Item_Name', 'Category_Type','Item_Price'],
+where :
+
+
+{
+  Category_Name     : { $like : '%' + keyword +'%'}
+ }
+
+
+}).then(category => {
+
+  if(category!=0)
+  {
+        console.log("there is a item with this name "+req.params.keyword);
+      //  res.status(200).send("there is a item with this name "+req.params.keyword);
+        res.send(category);
+  }
+  else {
+    {
+        console.log("there is no item with this name"+req.params.keyword);
+          res.status(200).send("there is no item with this name "+req.params.keyword);
+
+    }
+  }
+
+
+});
+
+};
+
+
 //update category with the help of id
 exports.update = (req,res)  => {
 
