@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colornew1">#004d40</color>
+    <color name="colornew2">#00251a</color>
+    <color name="colornew3">#39796b</color>
+    <color name="signup">#fff9ea</color>
+
+
+
+    <color name="overlay">#7f33</color>
+    <color name="overlayBackground">#7f333639</color>
+    <color name="overlayActionbar">#0e0d0e</color>
+    <color name="menubackground"></color>
+
+
+    <color name="menubck">#57F9E3BC</color>
+</resources>
