@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        tools:context=".MainActivity"
+
+        app:cardElevation="4dp">
+
+
+    <ScrollView android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+    >
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+        >
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:onClick="menu1"
+                    android:id="@+id/menu_name1"
+                    android:background="@drawable/i8"
+                    android:text="SALAD"
+                    android:textColor="@android:color/white"
+                    android:textSize="40sp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+            />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:id="@+id/menu_name2"
+                    android:background="@drawable/i30"
+                    android:text="SANDWICH"
+                    android:textColor="@android:color/white"
+                    android:textSize="40sp"
+                    android:gravity="center"
+                    android:layout_below="@+id/menu_name1"
+                    android:onClick="menu1"
+                    android:textStyle="bold"
+            />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:id="@+id/menu_name3"
+                    android:background="@drawable/i33"
+                    android:text="PIZZA"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    android:layout_below="@+id/menu_name2"
+                    android:textStyle="bold"
+                    android:onClick="menu1"
+            />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:id="@+id/menu_name4"
+                    android:background="@drawable/i47"
+                    android:text="NUDDLES"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"
+                    android:onClick="menu1"
+                    android:gravity="center"
+                    android:layout_below="@+id/menu_name3"
+                    android:textStyle="bold"
+            />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:id="@+id/menu_name5"
+                    android:background="@drawable/i12"
+                    android:text="BURGER"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    android:onClick="menu1"
+                    android:layout_below="@+id/menu_name4"
+                    android:textStyle="bold"
+            />
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:id="@+id/menu_name6"
+                    android:background="@drawable/i46"
+                    android:text="PASTA"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"
+                    android:onClick="menu1"
+                    android:gravity="center"
+                    android:layout_below="@+id/menu_name5"
+                    android:textStyle="bold"
+            />
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</android.support.v7.widget.CardView>
