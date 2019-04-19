@@ -14,9 +14,11 @@ import retrofit2.Response
 import android.view.ActionMode
 import android.widget.TextView
 import com.example.adminpage.R
-import com.example.myapplication.api.RetrofitClient
-import com.example.myapplication.models.LoginResponse
-import com.example.myapplication.storage.SharedPrefManager
+import com.example.adminpage.api.RetrofitClient
+import com.example.adminpage.models.LoginResponse
+import com.example.adminpage.storage.SharedPrefManager
+
+
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
 
@@ -41,7 +43,7 @@ class SignInActivity : AppCompatActivity() {
 
 
 
-            RetrofitClient.instance.userLogin(Password,Phone_No)
+            RetrofitClient.instance.userLogin(Phone_No,Password)
                 .enqueue(object: Callback<LoginResponse>{
                     override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                         Toast.makeText(applicationContext,t.message,Toast.LENGTH_LONG).show()
@@ -51,16 +53,16 @@ class SignInActivity : AppCompatActivity() {
 
                         if (!response.body()?.error!!)
                         {
-                            SharedPrefManager.getInstance(applicationContext).saveUser(response.body()?.user!!)
+                           // SharedPrefManager.getInstance(this@SignInActivity).saveUser(response.body()?.user!!)
 
-                            val intent = Intent(applicationContext, HomePageAdmin::class.java)
-                            intent.flags= Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            val intent = Intent(this@SignInActivity, HomePageAdmin::class.java)
+                            //intent.flags= Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             startActivity(intent)
 
                         }
 
-                        else{
-                            Toast.makeText(applicationContext,response.body()?.message,Toast.LENGTH_LONG).show()
+                        else if(response.body()?.error!!){
+                          Toast.makeText(applicationContext,"some problem occure",Toast.LENGTH_LONG).show()
                         }
 
                     }
@@ -71,16 +73,16 @@ class SignInActivity : AppCompatActivity() {
 
     }
 
-    override fun onStart() {
-        super.onStart()
-
-        if(SharedPrefManager.getInstance(this).isLoggedIn)
-        {
-
-            val intent = Intent(applicationContext, HomePageAdmin::class.java)
-            intent.flags= Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-
-        }
-    }
+//    override fun onStart() {
+//        super.onStart()
+//
+//        if(SharedPrefManager.getInstance(this).isLoggedIn)
+//        {
+//
+//            val intent = Intent(applicationContext, HomePageAdmin::class.java)
+//            intent.flags= Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//            startActivity(intent)
+//
+//        }
+//    }
 }

@@ -1,7 +1,7 @@
-package com.example.myapplication.storage
+package com.example.adminpage.storage
 
 import android.content.Context
-import com.example.myapplication.models.User
+import com.example.adminpage.models.User
 
 
 class SharedPrefManager private constructor(private val mCtx: Context) {

@@ -1,8 +1,9 @@
-package com.example.myapplication.api
+package com.example.adminpage.api
 
-import com.example.myapplication.models.DefaultResponse
-import com.example.myapplication.models.LoginResponse
 
+import com.example.adminpage.models.DefaultResponse
+import com.example.adminpage.models.LoginResponse
+import retrofit2.Call
 import retrofit2.http.*
 
 
@@ -19,7 +20,7 @@ interface Api {
           @Path("Phone_No")Phone_No:String,
           @Path("Password")Password:String
         //   @Field("Phone_No")Phone_No:String
-    ): retrofit2.Call<DefaultResponse>
+    ): Call<DefaultResponse>
 
 
   //@FormUrlEncoded
@@ -29,5 +30,5 @@ interface Api {
 
     @Path("Password")Password:String,
     @Path("Phone_No")Phone_No:String
-    ): retrofit2.Call<LoginResponse>
+    ): Call<LoginResponse>
 }
